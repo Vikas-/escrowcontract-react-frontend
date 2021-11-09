@@ -1,0 +1,30 @@
+{
+  "version": "0.0.0",
+  "name": "escrowcontract",
+  "instructions": [
+    {
+      "name": "create",
+      "accounts": [
+        { "name": "baseAccount", "isMut": true, "isSigner": true },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "increment",
+      "accounts": [{ "name": "baseAccount", "isMut": true, "isSigner": false }],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BaseAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [{ "name": "count", "type": "u64" }]
+      }
+    }
+  ],
+  "metadata": { "address": "58Tuj755EWmYAbbCrbfjfSNqeS6L3yM8AvHajYuJQA9K" }
+}
