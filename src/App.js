@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 import idl from './idl.json';
+import kp from './keypair.json';
 
 import { getPhantomWallet } from '@solana/wallet-adapter-wallets';
 import {
@@ -24,7 +25,11 @@ const wallets = [
 
 const { SystemProgram, Keypair } = web3;
 /* create an account  */
-const baseAccount = Keypair.generate();
+// This generates a new key on every run and we don't want that.
+// const baseAccount = Keypair.generate();
+const arr = Object.values(kp._keypair.secretKey);
+const secret = new Uint8Array(arr);
+const baseAccount = web3.Keypair.fromSecretKey(secret);
 const opts = {
   preflightCommitment: 'processed',
 };
